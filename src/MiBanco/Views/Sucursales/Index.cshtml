@@ -1,0 +1,33 @@
+@model IEnumerable<MiBanco.Application.Dtos.SucursalDto>
+@{ ViewData["Title"] = "Sucursales"; }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Sucursales</h2>
+    <button type="button" class="btn btn-primary" data-modal-url="@Url.Action("Create")">Agregar sucursal</button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Ciudad</th><th>Dirección</th><th>Teléfono</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Nombre</td>
+                <td>@x.Ciudad</td>
+                <td>@x.Direccion</td>
+                <td>@x.Telefono</td>
+                <td class="text-end text-nowrap">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-modal-url="@Url.Action("Edit", new { id = x.Id })">Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" data-modal-url="@Url.Action("Delete", new { id = x.Id })">Eliminar</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

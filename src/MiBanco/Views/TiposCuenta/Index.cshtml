@@ -1,0 +1,33 @@
+@model IEnumerable<MiBanco.Application.Dtos.TipoCuentaDto>
+@{ ViewData["Title"] = "Tipos de cuenta"; }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Tipos de cuenta</h2>
+    <button type="button" class="btn btn-primary" data-modal-url="@Url.Action("Create")">Agregar tipo de cuenta</button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Descripción</th><th>Tasa de interés (%)</th><th>Costo de mantenimiento ($)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Nombre</td>
+                <td>@x.Descripcion</td>
+                <td>@x.TasaInteres.ToString("N2")</td>
+                <td>@x.CostoMantenimiento.ToString("N2")</td>
+                <td class="text-end text-nowrap">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-modal-url="@Url.Action("Edit", new { id = x.Id })">Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" data-modal-url="@Url.Action("Delete", new { id = x.Id })">Eliminar</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

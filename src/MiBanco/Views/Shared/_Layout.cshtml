@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MiBanco</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">MiBanco</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Sucursales" asp-action="Index">Sucursales</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="TiposCuenta" asp-action="Index">Tipos de cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Clientes" asp-action="Index">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Cuentas" asp-action="Index">Cuentas</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Transacciones" asp-action="Index">Transacciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container pb-5">
+        @RenderBody()
+    </main>
+
+    <!-- Modal unico: jQuery carga aqui los formularios de crear, editar y eliminar -->
+    <div class="modal fade" id="crudModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/crud-modal.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

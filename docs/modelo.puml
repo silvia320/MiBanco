@@ -1,0 +1,57 @@
+@startuml
+hide circle
+skinparam shadowing false
+skinparam linetype ortho
+
+entity "sucursales" as Sucursal {
+  * Id : integer <<PK>>
+  --
+  * Nombre : varchar(60)
+  * Ciudad : varchar(60)
+  * Direccion : varchar(150)
+  * Telefono : varchar(15)
+}
+
+entity "tipos_cuenta" as TipoCuenta {
+  * Id : integer <<PK>>
+  --
+  * Nombre : varchar(60)
+  Descripcion : varchar(150)
+  * TasaInteres : numeric(18,2)
+  * CostoMantenimiento : numeric(18,2)
+}
+
+entity "clientes" as Cliente {
+  * Id : integer <<PK>>
+  --
+  * Cedula : varchar(10)
+  * NombreCompleto : varchar(120)
+  * Email : varchar(120)
+  * SucursalId : integer <<FK>>
+}
+
+entity "cuentas" as Cuenta {
+  * Id : integer <<PK>>
+  --
+  * NumeroCuenta : varchar(10)
+  * FechaApertura : date
+  * ClienteId : integer <<FK>>
+  * TipoCuentaId : integer <<FK>>
+  ..
+  Saldo : calculado (no es columna)
+}
+
+entity "transacciones" as Transaccion {
+  * Id : integer <<PK>>
+  --
+  * CuentaId : integer <<FK>>
+  * Tipo : varchar(1)
+  * Monto : numeric(18,2)
+  * Fecha : date
+}
+
+Sucursal ||--o{ Cliente : "tiene"
+Cliente ||--o{ Cuenta : "tiene"
+TipoCuenta ||--o{ Cuenta : "tiene"
+Cuenta ||--o{ Transaccion : "tiene"
+@enduml

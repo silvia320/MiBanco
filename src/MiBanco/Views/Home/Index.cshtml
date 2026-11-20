@@ -1,0 +1,60 @@
+@{ ViewData["Title"] = "Inicio"; }
+
+<div class="hero text-center mb-5">
+    <h1 class="display-4">MiBanco</h1>
+    <p class="lead col-lg-7 mx-auto mb-4">
+        Sistema bancario: sucursales, clientes, cuentas y transacciones en un solo lugar.
+    </p>
+    <div class="d-flex gap-2 justify-content-center flex-wrap">
+        <a class="btn btn-light btn-lg px-4" asp-controller="Clientes" asp-action="Index">Ver clientes</a>
+        <a class="btn btn-outline-light btn-lg px-4" asp-controller="Transacciones" asp-action="Index">Ver transacciones</a>
+    </div>
+</div>
+
+<div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col">
+        <a class="text-decoration-none text-reset" asp-controller="Sucursales" asp-action="Index">
+            <div class="card feature-card h-100 text-center"><div class="card-body p-4">
+                <div class="feature-icon">&#127970;</div>
+                <h5 class="card-title">Sucursales</h5>
+                <p class="card-text text-muted">Oficinas del banco donde se atiende a los clientes.</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col">
+        <a class="text-decoration-none text-reset" asp-controller="TiposCuenta" asp-action="Index">
+            <div class="card feature-card h-100 text-center"><div class="card-body p-4">
+                <div class="feature-icon">&#128179;</div>
+                <h5 class="card-title">Tipos de cuenta</h5>
+                <p class="card-text text-muted">Productos del banco: ahorros, corriente, etc.</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col">
+        <a class="text-decoration-none text-reset" asp-controller="Clientes" asp-action="Index">
+            <div class="card feature-card h-100 text-center"><div class="card-body p-4">
+                <div class="feature-icon">&#128100;</div>
+                <h5 class="card-title">Clientes</h5>
+                <p class="card-text text-muted">Personas que tienen cuentas en el banco.</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col">
+        <a class="text-decoration-none text-reset" asp-controller="Cuentas" asp-action="Index">
+            <div class="card feature-card h-100 text-center"><div class="card-body p-4">
+                <div class="feature-icon">&#127974;</div>
+                <h5 class="card-title">Cuentas</h5>
+                <p class="card-text text-muted">Cuentas de los clientes. El saldo se calcula con las transacciones.</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col">
+        <a class="text-decoration-none text-reset" asp-controller="Transacciones" asp-action="Index">
+            <div class="card feature-card h-100 text-center"><div class="card-body p-4">
+                <div class="feature-icon">&#128178;</div>
+                <h5 class="card-title">Transacciones</h5>
+                <p class="card-text text-muted">Depósitos y retiros de cada cuenta.</p>
+            </div></div>
+        </a>
+    </div>
+</div>

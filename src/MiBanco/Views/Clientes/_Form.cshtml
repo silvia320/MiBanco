@@ -1,0 +1,27 @@
+@model MiBanco.Application.Dtos.ClienteDto
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row g-3">
+    <div class="col-md-4">
+        <label asp-for="Cedula" class="form-label">Cédula</label>
+        <input asp-for="Cedula" class="form-control" />
+        <span asp-validation-for="Cedula" class="text-danger"></span>
+    </div>
+    <div class="col-md-8">
+        <label asp-for="NombreCompleto" class="form-label">Nombre completo</label>
+        <input asp-for="NombreCompleto" class="form-control" />
+        <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label">Correo</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="SucursalId" class="form-label">Sucursal</label>
+        <select asp-for="SucursalId" asp-items="(SelectList)ViewBag.SucursalItems" class="form-select">
+            <option value="0">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="SucursalId" class="text-danger"></span>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+@model MiBanco.Application.Dtos.CuentaDto
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="NumeroCuenta" class="form-label">Número de cuenta</label>
+        <input asp-for="NumeroCuenta" class="form-control" />
+        <span asp-validation-for="NumeroCuenta" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="FechaApertura" class="form-label">Fecha de apertura</label>
+        <input asp-for="FechaApertura" class="form-control" />
+        <span asp-validation-for="FechaApertura" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="ClienteId" class="form-label">Cliente</label>
+        <select asp-for="ClienteId" asp-items="(SelectList)ViewBag.ClienteItems" class="form-select">
+            <option value="0">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="ClienteId" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="TipoCuentaId" class="form-label">Tipo de cuenta</label>
+        <select asp-for="TipoCuentaId" asp-items="(SelectList)ViewBag.TipoCuentaItems" class="form-select">
+            <option value="0">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="TipoCuentaId" class="text-danger"></span>
+    </div>
+</div>
