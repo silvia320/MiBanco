@@ -24,5 +24,9 @@ public class TransaccionValidator : AbstractValidator<TransaccionDto>
         RuleFor(x => x.Fecha).Cascade(CascadeMode.Stop)
             .Must(f => f >= new DateOnly(1900, 1, 1)).WithMessage("Fecha no es válida")
             .Must(f => f <= DateOnly.FromDateTime(DateTime.Today)).WithMessage("Fecha no puede ser futura");
+
+        RuleFor(x => x.Descripcion).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Descripción: campo obligatorio")
+            .MaximumLength(200).WithMessage("Descripción: máximo 200 caracteres");
     }
 }

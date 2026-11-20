@@ -12,6 +12,7 @@ public class CuentaConfiguration : IEntityTypeConfiguration<Cuenta>
         b.HasKey(x => x.Id);
         b.Property(x => x.NumeroCuenta).IsRequired().HasMaxLength(10);
         b.HasIndex(x => x.NumeroCuenta).IsUnique();
+        b.Property(x => x.Moneda).IsRequired().HasMaxLength(30);
         b.HasOne(x => x.Cliente)
             .WithMany(t => t.Cuentas)
             .HasForeignKey(x => x.ClienteId)

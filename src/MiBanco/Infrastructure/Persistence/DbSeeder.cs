@@ -30,15 +30,15 @@ public static class DbSeeder
             var sucursal = await db.Sucursales.OrderBy(s => s.Id).FirstAsync();
             var ahorros = await db.TiposCuenta.OrderBy(t => t.Id).FirstAsync();
 
-            var ana = new Cliente { Cedula = "1712345678", NombreCompleto = "Ana Pérez", Email = "ana.perez@correo.com", Sucursal = sucursal };
-            var luis = new Cliente { Cedula = "1798765432", NombreCompleto = "Luis Andrade", Email = "luis.andrade@correo.com", Sucursal = sucursal };
+            var ana = new Cliente { Cedula = "1712345678", NombreCompleto = "Ana Pérez", Email = "ana.perez@correo.com", Sucursal = sucursal, Activo = true };
+            var luis = new Cliente { Cedula = "1798765432", NombreCompleto = "Luis Andrade", Email = "luis.andrade@correo.com", Sucursal = sucursal, Activo = true };
 
-            var cuentaAna = new Cuenta { NumeroCuenta = "2200123456", FechaApertura = new DateOnly(2026, 1, 15), Cliente = ana, TipoCuenta = ahorros };
-            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "D", Monto = 500m, Fecha = new DateOnly(2026, 1, 15) });
-            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "D", Monto = 250m, Fecha = new DateOnly(2026, 2, 10) });
-            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "R", Monto = 120m, Fecha = new DateOnly(2026, 3, 5) });
+            var cuentaAna = new Cuenta { NumeroCuenta = "2200123456", FechaApertura = new DateOnly(2026, 1, 15), Cliente = ana, TipoCuenta = ahorros, Moneda = "USD" };
+            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "D", Monto = 500m, Fecha = new DateOnly(2026, 1, 15), Descripcion = "Depósito inicial" });
+            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "D", Monto = 250m, Fecha = new DateOnly(2026, 2, 10), Descripcion = "Depósito mensual" });
+            cuentaAna.Transacciones.Add(new Transaccion { Tipo = "R", Monto = 120m, Fecha = new DateOnly(2026, 3, 5), Descripcion = "Retiro en caja" });
 
-            var cuentaLuis = new Cuenta { NumeroCuenta = "2200654321", FechaApertura = new DateOnly(2026, 2, 1), Cliente = luis, TipoCuenta = ahorros };
+            var cuentaLuis = new Cuenta { NumeroCuenta = "2200654321", FechaApertura = new DateOnly(2026, 2, 1), Cliente = luis, TipoCuenta = ahorros, Moneda = "USD" };
             cuentaLuis.Transacciones.Add(new Transaccion { Tipo = "D", Monto = 1000m, Fecha = new DateOnly(2026, 2, 1) });
 
             db.Cuentas.AddRange(cuentaAna, cuentaLuis);

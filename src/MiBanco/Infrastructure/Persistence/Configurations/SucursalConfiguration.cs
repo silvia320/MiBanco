@@ -14,5 +14,6 @@ public class SucursalConfiguration : IEntityTypeConfiguration<Sucursal>
         b.Property(x => x.Ciudad).IsRequired().HasMaxLength(60);
         b.Property(x => x.Direccion).IsRequired().HasMaxLength(150);
         b.Property(x => x.Telefono).IsRequired().HasMaxLength(15);
+        b.Property(x => x.Email).IsRequired().HasMaxLength(120);
     }
 }

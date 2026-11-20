@@ -15,6 +15,7 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
         b.Property(x => x.NombreCompleto).IsRequired().HasMaxLength(120);
         b.Property(x => x.Email).IsRequired().HasMaxLength(120);
         b.HasIndex(x => x.Email).IsUnique();
+        b.Property(x => x.Activo).IsRequired().HasDefaultValue(true);
         b.HasOne(x => x.Sucursal)
             .WithMany(t => t.Clientes)
             .HasForeignKey(x => x.SucursalId)

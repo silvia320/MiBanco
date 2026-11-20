@@ -7,6 +7,7 @@ public class ClienteDto
     public string NombreCompleto { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public int SucursalId { get; set; }
+    public bool Activo { get; set; } = true;
     public string? SucursalTexto { get; set; }   // solo lectura, para el listado
 
     // Texto que se muestra en los desplegables

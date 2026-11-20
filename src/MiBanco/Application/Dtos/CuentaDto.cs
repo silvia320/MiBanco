@@ -10,6 +10,7 @@ public class CuentaDto
     public int TipoCuentaId { get; set; }
     public string? TipoCuentaTexto { get; set; }   // solo lectura, para el listado
     public decimal Saldo { get; set; }
+    public string Moneda { get; set; } = string.Empty;
 
     // Texto que se muestra en los desplegables
     public string Texto => NumeroCuenta;

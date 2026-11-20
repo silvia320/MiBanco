@@ -31,5 +31,6 @@ public class ClienteValidator : AbstractValidator<ClienteDto>
             .GreaterThan(0).WithMessage("Seleccione Sucursal")
             .MustAsync(async (v, ct) => await repoSucursal.GetByIdAsync(v, ct) is not null)
             .WithMessage("Sucursal: el valor seleccionado no existe");
+        RuleFor(x => x.Activo).NotNull().WithMessage("Activo: campo obligatorio");
     }
 }

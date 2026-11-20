@@ -10,7 +10,7 @@
     <table class="table table-striped align-middle">
         <thead>
             <tr>
-                <th>Cuenta</th><th>Tipo</th><th>Monto ($)</th><th>Fecha</th>
+                <th>Cuenta</th><th>Tipo</th><th>Monto ($)</th><th>Fecha</th><th>Descripción</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,6 +22,7 @@
                 <td>@(x.Tipo == "D" ? "Depósito" : "Retiro")</td>
                 <td>@x.Monto.ToString("N2")</td>
                 <td>@x.Fecha.ToString("dd/MM/yyyy")</td>
+                <td>@x.Descripcion</td>
                 <td class="text-end text-nowrap">
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-modal-url="@Url.Action("Edit", new { id = x.Id })">Editar</button>
                     <button type="button" class="btn btn-sm btn-outline-danger" data-modal-url="@Url.Action("Delete", new { id = x.Id })">Eliminar</button>

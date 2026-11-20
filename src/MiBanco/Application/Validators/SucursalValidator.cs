@@ -25,5 +25,11 @@ public class SucursalValidator : AbstractValidator<SucursalDto>
             .NotEmpty().WithMessage("Teléfono: campo obligatorio")
             .MaximumLength(15).WithMessage("Teléfono: máximo 15 caracteres")
             .Matches(@"^[0-9+\-\s]{7,15}$").WithMessage("El teléfono debe tener entre 7 y 15 caracteres (dígitos, +, -)");
+
+        RuleFor(x => x.Email).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Correo: campo obligatorio")
+            .MaximumLength(120).WithMessage("Correo: máximo 120 caracteres")
+            .Matches(@"^[^@\s]+@[^@\s]+\.[^@\s]+$").WithMessage("El correo no tiene un formato válido")
+            .EmailAddress().WithMessage("El correo no tiene un formato válido");
     }
 }

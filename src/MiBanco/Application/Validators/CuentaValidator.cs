@@ -29,5 +29,8 @@ public class CuentaValidator : AbstractValidator<CuentaDto>
             .GreaterThan(0).WithMessage("Seleccione Tipo de cuenta")
             .MustAsync(async (v, ct) => await repoTipoCuenta.GetByIdAsync(v, ct) is not null)
             .WithMessage("Tipo de cuenta: el valor seleccionado no existe");
+        RuleFor(x => x.Moneda).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Moneda: campo obligatorio")
+            .MaximumLength(30).WithMessage("Moneda: máximo 30 caracteres");
     }
 }

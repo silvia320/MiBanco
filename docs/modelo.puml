@@ -10,6 +10,7 @@ entity "sucursales" as Sucursal {
   * Ciudad : varchar(60)
   * Direccion : varchar(150)
   * Telefono : varchar(15)
+  * Email : varchar(120)
 }
 
 entity "tipos_cuenta" as TipoCuenta {
@@ -28,6 +29,7 @@ entity "clientes" as Cliente {
   * NombreCompleto : varchar(120)
   * Email : varchar(120)
   * SucursalId : integer <<FK>>
+  * Activo : boolean
 }
 
 entity "cuentas" as Cuenta {
@@ -37,6 +39,7 @@ entity "cuentas" as Cuenta {
   * FechaApertura : date
   * ClienteId : integer <<FK>>
   * TipoCuentaId : integer <<FK>>
+  * Moneda : varchar(30)
   ..
   Saldo : calculado (no es columna)
 }
@@ -48,6 +51,7 @@ entity "transacciones" as Transaccion {
   * Tipo : varchar(1)
   * Monto : numeric(18,2)
   * Fecha : date
+  * Descripcion : varchar(150)
 }
 
 Sucursal ||--o{ Cliente : "tiene"

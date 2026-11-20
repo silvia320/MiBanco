@@ -10,6 +10,7 @@ public class TransaccionConfiguration : IEntityTypeConfiguration<Transaccion>
     {
         b.ToTable("transacciones");
         b.HasKey(x => x.Id);
+        b.Property(x => x.Descripcion).IsRequired().HasMaxLength(200);
         b.HasOne(x => x.Cuenta)
             .WithMany(t => t.Transacciones)
             .HasForeignKey(x => x.CuentaId)

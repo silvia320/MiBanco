@@ -30,6 +30,11 @@ namespace MiBanco.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Activo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
                     b.Property<string>("Cedula")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -75,6 +80,11 @@ namespace MiBanco.Infrastructure.Persistence.Migrations
                     b.Property<DateOnly>("FechaApertura")
                         .HasColumnType("date");
 
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
                     b.Property<string>("NumeroCuenta")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -112,6 +122,11 @@ namespace MiBanco.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("character varying(120)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -169,6 +184,11 @@ namespace MiBanco.Infrastructure.Persistence.Migrations
 
                     b.Property<int>("CuentaId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<DateOnly>("Fecha")
                         .HasColumnType("date");

@@ -10,7 +10,7 @@
     <table class="table table-striped align-middle">
         <thead>
             <tr>
-                <th>Nombre</th><th>Ciudad</th><th>Dirección</th><th>Teléfono</th>
+                <th>Nombre</th><th>Ciudad</th><th>Dirección</th><th>Teléfono</th><th>Correo</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,6 +22,7 @@
                 <td>@x.Ciudad</td>
                 <td>@x.Direccion</td>
                 <td>@x.Telefono</td>
+                <td>@x.Email</td>
                 <td class="text-end text-nowrap">
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-modal-url="@Url.Action("Edit", new { id = x.Id })">Editar</button>
                     <button type="button" class="btn btn-sm btn-outline-danger" data-modal-url="@Url.Action("Delete", new { id = x.Id })">Eliminar</button>
